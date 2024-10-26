@@ -7,7 +7,7 @@ const companyModel = require("../models/companyModel")(sequelize, DataTypes);
 const CompanyAdd = async (req, res) => {
     try {
         const { companyname, username, mobilenumber } = req.body
-        const createdBy = req.admin.username
+        const createdBy = req.agent.username
 
         const AddData = await companyModel.create({ companyname, username, mobilenumber, createdBy })
 
@@ -17,13 +17,13 @@ const CompanyAdd = async (req, res) => {
             Data: AddData
         })
 
-    } catch (error) {    
+    } catch (error) {
         console.log(error);
         return res.status(400).send({
-            success: false,
-            message: error.message   
+            success: false, 
+            message: error.message
         })
     }
-}    
+}
 
 module.exports = ({ CompanyAdd })

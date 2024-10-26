@@ -12,4 +12,6 @@ routes.use('/excel', require('./excelFileRoutes'));
 
 routes.use('/company', require('./companyRoutes'));
 
+routes.use('/agent', require('./agentRoutes'));
+
 module.exports = routes;      
