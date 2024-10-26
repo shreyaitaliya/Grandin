@@ -6,7 +6,7 @@ const companyController = require('../controllers/companyCOntroller');
 
 const TokenVerify = require('../middelware/agentToken');
 
-//Routes
+//Routes   
 routes.post('/', TokenVerify, companyController.CompanyAdd);
 
 module.exports = routes; 

@@ -24,7 +24,7 @@ const authenticateToken = (req, res, next) => {
                 message: 'Token is not valid',
             });
         }
-        req.agent = decoded.User;
+        req.agent = decoded;
 
         next();
     });
