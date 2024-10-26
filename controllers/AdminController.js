@@ -12,7 +12,7 @@ const AdminAdd = async (req, res) => {
 
         const AddData = await adminModel.create({ name, email, username, password, role, createdBy })
 
-        return res.status(200).send({
+        return res.status(200).send({   
             success: true,
             message: 'Admin Added Successfully..',
             Data: AddData

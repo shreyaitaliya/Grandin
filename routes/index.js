@@ -10,4 +10,6 @@ routes.use('/admin', require('./adminRoutes'));
 
 routes.use('/excel', require('./excelFileRoutes'));
 
+routes.use('/company', require('./companyRoutes'));
+
 module.exports = routes;      
