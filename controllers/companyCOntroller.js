@@ -21,9 +21,9 @@ const CompanyAdd = async (req, res) => {
         console.log(error);
         return res.status(400).send({
             success: false,
-            message: error.message
+            message: error.message   
         })
     }
-}
+}    
 
 module.exports = ({ CompanyAdd })
