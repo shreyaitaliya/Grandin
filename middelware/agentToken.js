@@ -25,6 +25,7 @@ const authenticateToken = (req, res, next) => {
             });
         }
         req.agent = decoded;
+        console.log(req.agent);
 
         next();
     });

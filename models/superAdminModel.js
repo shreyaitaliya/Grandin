@@ -17,10 +17,10 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        role: {   
+        role: {
             type: DataTypes.INTEGER,
             default: false
-        }  
+        }
     }, {
         timestamps: false,
         tableName: "superAdmin",

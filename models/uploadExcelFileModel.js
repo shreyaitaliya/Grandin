@@ -1,29 +1,29 @@
-const { DataTypes } = require("sequelize");
-const { sequelize } = require("../config/db");
-const { type } = require("os");
+// uploadExcelFileModel.js
 
 module.exports = (sequelize, DataTypes) => {
-    const excelfile = sequelize.define('excelfile', {
+    const Excelfile = sequelize.define("Excelfile", {
         excelfileID: {
             type: DataTypes.INTEGER,
-            primaryKey: true,
-            autoIncrement: true
+            autoIncrement: true,
+            primaryKey: true
+        },
+        username: {
+            type: DataTypes.STRING,
+            allowNull: false
         },
         excelfile: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: false
         },
         createdBy: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: false
         },
         createdOn: {
             type: DataTypes.DATE,
             defaultValue: DataTypes.NOW
-        },
-    }, {
-        timestamps: false,
-        tableName: "excelfile",
+        }
     });
-    return excelfile;
-};   
+
+    return Excelfile;
+};

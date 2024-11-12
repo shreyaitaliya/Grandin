@@ -6,7 +6,6 @@ const multer = require('multer');
 const path = require('path');
 
 const excelController = require('../controllers/excelFileController');
-const TokenVerify = require('../middelware/adminToken');
 
 // Configure storage
 const storage = multer.diskStorage({
@@ -32,8 +31,10 @@ const fileFilter = (req, file, cb) => {
 const upload = multer({ storage, fileFilter });
 
 // Routes
-routes.post('/', TokenVerify, upload.single('excelfile'), excelController.AddExcelFile);
+routes.post('/', upload.single('excelfile'), excelController.AddExcelFile);
 
 routes.get('/', upload.single('excelfile'), excelController.GetExcelFiles);
+
+
 
 module.exports = routes;

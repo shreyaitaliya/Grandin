@@ -10,13 +10,13 @@ async function createAdmin() {
     if (!adminExists) {
         await superadminModel.create({
             username: "superadmin",
-            password: "superadmin",
-            role: 0,
-        });
+            password: "superadmin",    
+            role: 0,         
+        });       mkm 
         console.log("Admin created successfully");
-    } else {
+    } else {     
         console.log("Admin already exists");
-    }
+    }   
 }
 
 createAdmin();
@@ -43,13 +43,10 @@ const login = async (req, res) => {
             });
         }
 
-        // Use a static token
-        const staticToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyIjp7ImFkbWluSUQiOjEsInVzZXJuYW1lIjoic3VwZXJhZG1pbiIsInBhc3N3b3JkIjoic3VwZXJhZG1pbiIsInJvbGUiOjB9LCJpYXQiOjE3Mjk5NDMyNjEsImV4cCI6MTIzNjcyMDg4NDMyNjF9.MeHQPhpd7j_JlDgSDEuTKPci82JHgmIdwnaz6z2LU3M';
-
         return res.status(200).send({
             success: true,
             message: 'Login Successfully..',
-            Token: staticToken
+            admin
         });
 
 
@@ -61,6 +58,7 @@ const login = async (req, res) => {
         });
     }
 };
+  
 
 
 module.exports = ({ login })

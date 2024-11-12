@@ -4,11 +4,11 @@ const routes = express.Router();
 
 const agentController = require('../controllers/agentController');
 
-const TokenVerify = require('../middelware/adminToken');
 
-//Routes
-routes.post('/', TokenVerify, agentController.AgentAdd);
+routes.post('/login', agentController.AgentLogin);
 
-routes.post('/login', TokenVerify, agentController.AgentLogin);
+routes.get('/', agentController.GetByData);
+
+routes.post('/', agentController.AgentAdd);
 
 module.exports = routes; 

@@ -10,8 +10,10 @@ routes.use('/admin', require('./adminRoutes'));
 
 routes.use('/excel', require('./excelFileRoutes'));
 
-routes.use('/company', require('./companyRoutes'));
+// routes.use('/company', require('./companyRoutes'));
 
 routes.use('/agent', require('./agentRoutes'));
+
+routes.use('/apk', require('./apkRoutes'));
 
 module.exports = routes;      

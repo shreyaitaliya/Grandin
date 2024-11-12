@@ -1,21 +1,14 @@
-const { DataTypes } = require("sequelize");
-const { sequelize } = require("../config/db");
-const { type } = require("os");
 
-module.exports = (sequelize, DataTypes) => {
-    const admin = sequelize.define('admin', {
+
+
+const { DataTypes } = require("sequelize");
+
+module.exports = (sequelize) => {
+    const Admin = sequelize.define('admin', {
         adminID: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
-        },
-        name: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        email: {
-            type: DataTypes.STRING,
-            allowNull: false,
         },
         username: {
             type: DataTypes.STRING,
@@ -27,19 +20,30 @@ module.exports = (sequelize, DataTypes) => {
         },
         role: {
             type: DataTypes.INTEGER,
-            defaultValue: 1
-        },
-        createdBy: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        createdOn: {
-            type: DataTypes.DATE,
-            defaultValue: DataTypes.NOW
+            defaultValue: 1 // Default is admin
         },
     }, {
         timestamps: false,
         tableName: "admin",
     });
-    return admin;
-};   
+
+    // Add hook to insert static data after table creation
+    Admin.afterSync(async () => {
+        const count = await Admin.count();
+        if (count === 0) {
+            await Admin.create({
+                username: 'company123',
+                password: 'company123',
+                role: 1
+            });
+            await Admin.create({
+                username: 'superadmin123',
+                password: 'superadmin123',
+                role: 0
+            });
+        }
+    });
+
+    return Admin;
+};
+
